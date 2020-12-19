@@ -1,0 +1,3 @@
+[submodule "src/lib/stb"]
+	path = src/lib/stb
+	url = https://github.com/borodust/stb.git
