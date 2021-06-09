@@ -2,7 +2,7 @@
   (:use :cl))
 (cl:in-package :stb.image)
 
-(claw.wrapper:defwrapper (claw-stb/image/wrapper
+(claw.wrapper:defwrapper (:claw-stb/image/wrapper
                           (:system claw-stb/wrapper)
                           (:headers "stb_image.h")
                           (:defines "STB_IMAGE_IMPLEMENTATION" 1)

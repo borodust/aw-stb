@@ -2,7 +2,7 @@
   (:use :cl))
 (cl:in-package :stb.image.write)
 
-(claw.wrapper:defwrapper (claw-stb/image-write/wrapper
+(claw.wrapper:defwrapper (:claw-stb/image-write/wrapper
                           (:system claw-stb/wrapper)
                           (:headers "stb_image_write.h")
                           (:defines "STB_IMAGE_WRITE_IMPLEMENTATION" 1)
