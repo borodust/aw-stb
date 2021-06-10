@@ -2,16 +2,16 @@
   (:use :cl))
 (cl:in-package :stb.image.write)
 
-(claw.wrapper:defwrapper (:claw-stb/image-write/wrapper
-                          (:system claw-stb/wrapper)
+(claw.wrapper:defwrapper (:aw-stb/image-write/wrapper
+                          (:system aw-stb/wrapper)
                           (:headers "stb_image_write.h")
                           (:defines "STB_IMAGE_WRITE_IMPLEMENTATION" 1)
                           (:includes :stb-includes)
                           (:intrinsics :sse42 :avx)
                           (:targets ((:and :x86-64 :linux) "x86_64-pc-linux-gnu")
                                     ((:and :aarch64 :android) "aarch64-linux-android"))
-                          (:persistent :claw-stb-image-write-bindings
-                           :asd-path "../claw-stb-image-write-bindings.asd"
+                          (:persistent :aw-stb-image-write-bindings
+                           :asd-path "../aw-stb-image-write-bindings.asd"
                            :bindings-path "../bindings/image-write/"
                            :depends-on (:claw-utils))
                           (:language :c)

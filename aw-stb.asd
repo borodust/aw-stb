@@ -1,31 +1,31 @@
-(asdf:defsystem :claw-stb
+(asdf:defsystem :aw-stb
   :description "Common Lisp bindings for STB library collection"
   :version "0.0.1"
   :author "Pavel Korolev"
   :mailto "dev@borodust.org"
   :license "MIT"
-  :depends-on (:claw-stb/image :claw-stb/image-write))
+  :depends-on (:aw-stb/image :aw-stb/image-write))
 
 
-(asdf:defsystem :claw-stb/image
+(asdf:defsystem :aw-stb/image
   :description "Bindings for stb_image.h library"
   :version "0.0.1"
   :author "Pavel Korolev"
   :mailto "dev@borodust.org"
   :license "MIT"
-  :depends-on (:claw-stb-image-bindings))
+  :depends-on (:aw-stb-image-bindings))
 
 
-(asdf:defsystem :claw-stb/image-write
+(asdf:defsystem :aw-stb/image-write
   :description "Bindigns for stb_image_write.h library"
   :version "0.0.1"
   :author "Pavel Korolev"
   :mailto "dev@borodust.org"
   :license "MIT"
-  :depends-on (:claw-stb-image-write-bindings))
+  :depends-on (:aw-stb-image-write-bindings))
 
 
-(asdf:defsystem :claw-stb/wrapper
+(asdf:defsystem :aw-stb/wrapper
   :description "Wrapper generator for stb library collection"
   :version "0.0.1"
   :author "Pavel Korolev"
