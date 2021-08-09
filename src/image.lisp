@@ -2,8 +2,8 @@
   (:use :cl))
 (cl:in-package :stb.image)
 
-(claw.wrapper:defwrapper (:aw-stb/image/wrapper
-                          (:system aw-stb/wrapper)
+(claw.wrapper:defwrapper (:aw-stb-image
+                          (:system :aw-stb/wrapper)
                           (:headers "stb_image.h")
                           (:defines "STB_IMAGE_IMPLEMENTATION" 1)
                           (:includes :stb-includes)

@@ -1,7 +1,6 @@
 (uiop:define-package :%stb.image.write (:use))
-(uiop:define-package :claw-stb-image-write-bindings~pristine (:use
-                                                              :cl))
-(common-lisp:in-package :claw-stb-image-write-bindings~pristine)
+(uiop:define-package :aw-stb-image-write-bindings~pristine (:use :cl))
+(common-lisp:in-package :aw-stb-image-write-bindings~pristine)
 
 (declaim (inline %stb.image.write::flip-vertically-on-write))
 
@@ -18,7 +17,8 @@
               (%stb.image.write::w :int)
               (%stb.image.write::h :int)
               (%stb.image.write::comp :int)
-              (%stb.image.write::data (:pointer :void)))
+              (%stb.image.write::data
+               (claw-utils:claw-pointer :void)))
 
 (cffi:defctype %stb.image.write::write-func :void)
 
@@ -28,12 +28,15 @@
                %stb.image.write::write-bmp-to-func)
               :int
               (%stb.image.write::func
-               (:pointer %stb.image.write::write-func))
-              (%stb.image.write::context (:pointer :void))
+               (claw-utils:claw-pointer
+                %stb.image.write::write-func))
+              (%stb.image.write::context
+               (claw-utils:claw-pointer :void))
               (%stb.image.write::w :int)
               (%stb.image.write::h :int)
               (%stb.image.write::comp :int)
-              (%stb.image.write::data (:pointer :void)))
+              (%stb.image.write::data
+               (claw-utils:claw-pointer :void)))
 
 (declaim (inline %stb.image.write::write-hdr))
 
@@ -43,7 +46,8 @@
               (%stb.image.write::w :int)
               (%stb.image.write::h :int)
               (%stb.image.write::comp :int)
-              (%stb.image.write::data (:pointer :float)))
+              (%stb.image.write::data
+               (claw-utils:claw-pointer :float)))
 
 (declaim (inline %stb.image.write::write-hdr-to-func))
 
@@ -51,12 +55,15 @@
                %stb.image.write::write-hdr-to-func)
               :int
               (%stb.image.write::func
-               (:pointer %stb.image.write::write-func))
-              (%stb.image.write::context (:pointer :void))
+               (claw-utils:claw-pointer
+                %stb.image.write::write-func))
+              (%stb.image.write::context
+               (claw-utils:claw-pointer :void))
               (%stb.image.write::w :int)
               (%stb.image.write::h :int)
               (%stb.image.write::comp :int)
-              (%stb.image.write::data (:pointer :float)))
+              (%stb.image.write::data
+               (claw-utils:claw-pointer :float)))
 
 (declaim (inline %stb.image.write::write-jpg))
 
@@ -66,7 +73,8 @@
               (%stb.image.write::x :int)
               (%stb.image.write::y :int)
               (%stb.image.write::comp :int)
-              (%stb.image.write::data (:pointer :void))
+              (%stb.image.write::data
+               (claw-utils:claw-pointer :void))
               (%stb.image.write::quality :int))
 
 (declaim (inline %stb.image.write::write-jpg-to-func))
@@ -75,12 +83,15 @@
                %stb.image.write::write-jpg-to-func)
               :int
               (%stb.image.write::func
-               (:pointer %stb.image.write::write-func))
-              (%stb.image.write::context (:pointer :void))
+               (claw-utils:claw-pointer
+                %stb.image.write::write-func))
+              (%stb.image.write::context
+               (claw-utils:claw-pointer :void))
               (%stb.image.write::x :int)
               (%stb.image.write::y :int)
               (%stb.image.write::comp :int)
-              (%stb.image.write::data (:pointer :void))
+              (%stb.image.write::data
+               (claw-utils:claw-pointer :void))
               (%stb.image.write::quality :int))
 
 (declaim (inline %stb.image.write::write-png))
@@ -91,7 +102,8 @@
               (%stb.image.write::w :int)
               (%stb.image.write::h :int)
               (%stb.image.write::comp :int)
-              (%stb.image.write::data (:pointer :void))
+              (%stb.image.write::data
+               (claw-utils:claw-pointer :void))
               (%stb.image.write::stride-in-bytes :int))
 
 (declaim (inline %stb.image.write::write-png-to-func))
@@ -100,25 +112,30 @@
                %stb.image.write::write-png-to-func)
               :int
               (%stb.image.write::func
-               (:pointer %stb.image.write::write-func))
-              (%stb.image.write::context (:pointer :void))
+               (claw-utils:claw-pointer
+                %stb.image.write::write-func))
+              (%stb.image.write::context
+               (claw-utils:claw-pointer :void))
               (%stb.image.write::w :int)
               (%stb.image.write::h :int)
               (%stb.image.write::comp :int)
-              (%stb.image.write::data (:pointer :void))
+              (%stb.image.write::data
+               (claw-utils:claw-pointer :void))
               (%stb.image.write::stride-in-bytes :int))
 
 (declaim (inline %stb.image.write::write-png-to-mem))
 
 (cffi:defcfun ("stbi_write_png_to_mem"
                %stb.image.write::write-png-to-mem)
-              (:pointer :unsigned-char)
-              (%stb.image.write::pixels (:pointer :unsigned-char))
+              (claw-utils:claw-pointer :unsigned-char)
+              (%stb.image.write::pixels
+               (claw-utils:claw-pointer :unsigned-char))
               (%stb.image.write::stride-bytes :int)
               (%stb.image.write::x :int)
               (%stb.image.write::y :int)
               (%stb.image.write::n :int)
-              (%stb.image.write::out-len (:pointer :int)))
+              (%stb.image.write::out-len
+               (claw-utils:claw-pointer :int)))
 
 (declaim (inline %stb.image.write::write-tga))
 
@@ -128,7 +145,8 @@
               (%stb.image.write::w :int)
               (%stb.image.write::h :int)
               (%stb.image.write::comp :int)
-              (%stb.image.write::data (:pointer :void)))
+              (%stb.image.write::data
+               (claw-utils:claw-pointer :void)))
 
 (declaim (inline %stb.image.write::write-tga-to-func))
 
@@ -136,20 +154,25 @@
                %stb.image.write::write-tga-to-func)
               :int
               (%stb.image.write::func
-               (:pointer %stb.image.write::write-func))
-              (%stb.image.write::context (:pointer :void))
+               (claw-utils:claw-pointer
+                %stb.image.write::write-func))
+              (%stb.image.write::context
+               (claw-utils:claw-pointer :void))
               (%stb.image.write::w :int)
               (%stb.image.write::h :int)
               (%stb.image.write::comp :int)
-              (%stb.image.write::data (:pointer :void)))
+              (%stb.image.write::data
+               (claw-utils:claw-pointer :void)))
 
 (declaim (inline %stb.image.write::zlib-compress))
 
 (cffi:defcfun ("stbi_zlib_compress" %stb.image.write::zlib-compress)
-              (:pointer :unsigned-char)
-              (%stb.image.write::data (:pointer :unsigned-char))
+              (claw-utils:claw-pointer :unsigned-char)
+              (%stb.image.write::data
+               (claw-utils:claw-pointer :unsigned-char))
               (%stb.image.write::data-len :int)
-              (%stb.image.write::out-len (:pointer :int))
+              (%stb.image.write::out-len
+               (claw-utils:claw-pointer :int))
               (%stb.image.write::quality :int))
 
 (cffi:defcstruct (%stb.image.write::|C:@SA@STBI--WRITE-CONTEXT| :size
@@ -188,7 +211,8 @@
                %stb.image.write::%end-write-file)
               :void
               (%stb.image.write::s
-               (:pointer %stb.image.write::%write-context)))
+               (claw-utils:claw-pointer
+                %stb.image.write::%write-context)))
 
 (declaim (inline %stb.image.write::%start-write-callbacks))
 
@@ -196,10 +220,13 @@
                %stb.image.write::%start-write-callbacks)
               :void
               (%stb.image.write::s
-               (:pointer %stb.image.write::%write-context))
+               (claw-utils:claw-pointer
+                %stb.image.write::%write-context))
               (%stb.image.write::c
-               (:pointer %stb.image.write::write-func))
-              (%stb.image.write::context (:pointer :void)))
+               (claw-utils:claw-pointer
+                %stb.image.write::write-func))
+              (%stb.image.write::context
+               (claw-utils:claw-pointer :void)))
 
 (declaim (inline %stb.image.write::%start-write-file))
 
@@ -207,15 +234,18 @@
                %stb.image.write::%start-write-file)
               :int
               (%stb.image.write::s
-               (:pointer %stb.image.write::%write-context))
+               (claw-utils:claw-pointer
+                %stb.image.write::%write-context))
               (%stb.image.write::filename claw-utils:claw-string))
 
 (declaim (inline %stb.image.write::%stdio-write))
 
 (cffi:defcfun ("stbi__stdio_write" %stb.image.write::%stdio-write)
               :void
-              (%stb.image.write::context (:pointer :void))
-              (%stb.image.write::data (:pointer :void))
+              (%stb.image.write::context
+               (claw-utils:claw-pointer :void))
+              (%stb.image.write::data
+               (claw-utils:claw-pointer :void))
               (%stb.image.write::size :int))
 
 (declaim (inline %stb.image.write::write-bmp-core))
@@ -224,11 +254,13 @@
                %stb.image.write::write-bmp-core)
               :int
               (%stb.image.write::s
-               (:pointer %stb.image.write::%write-context))
+               (claw-utils:claw-pointer
+                %stb.image.write::%write-context))
               (%stb.image.write::x :int)
               (%stb.image.write::y :int)
               (%stb.image.write::comp :int)
-              (%stb.image.write::data (:pointer :void)))
+              (%stb.image.write::data
+               (claw-utils:claw-pointer :void)))
 
 (declaim (inline %stb.image.write::write-hdr-core))
 
@@ -236,11 +268,13 @@
                %stb.image.write::write-hdr-core)
               :int
               (%stb.image.write::s
-               (:pointer %stb.image.write::%write-context))
+               (claw-utils:claw-pointer
+                %stb.image.write::%write-context))
               (%stb.image.write::x :int)
               (%stb.image.write::y :int)
               (%stb.image.write::comp :int)
-              (%stb.image.write::data (:pointer :float)))
+              (%stb.image.write::data
+               (claw-utils:claw-pointer :float)))
 
 (declaim (inline %stb.image.write::write-jpg-core))
 
@@ -248,11 +282,13 @@
                %stb.image.write::write-jpg-core)
               :int
               (%stb.image.write::s
-               (:pointer %stb.image.write::%write-context))
+               (claw-utils:claw-pointer
+                %stb.image.write::%write-context))
               (%stb.image.write::width :int)
               (%stb.image.write::height :int)
               (%stb.image.write::comp :int)
-              (%stb.image.write::data (:pointer :void))
+              (%stb.image.write::data
+               (claw-utils:claw-pointer :void))
               (%stb.image.write::quality :int))
 
 (declaim (inline %stb.image.write::write-tga-core))
@@ -261,47 +297,49 @@
                %stb.image.write::write-tga-core)
               :int
               (%stb.image.write::s
-               (:pointer %stb.image.write::%write-context))
+               (claw-utils:claw-pointer
+                %stb.image.write::%write-context))
               (%stb.image.write::x :int)
               (%stb.image.write::y :int)
               (%stb.image.write::comp :int)
-              (%stb.image.write::data (:pointer :void)))
+              (%stb.image.write::data
+               (claw-utils:claw-pointer :void)))
 
 (defparameter %stb.image.write::*%flip-vertically-on-write* 0)
 
 (eval-when (:load-toplevel :compile-toplevel :execute)
-  (export '%stb.image.write::write-png-to-func "%STB.IMAGE.WRITE")
-  (export '%stb.image.write::write-bmp-core "%STB.IMAGE.WRITE")
-  (export '%stb.image.write::write-bmp "%STB.IMAGE.WRITE")
+  (export '%stb.image.write::write-png-to-func :%stb.image.write)
+  (export '%stb.image.write::write-bmp-core :%stb.image.write)
+  (export '%stb.image.write::write-bmp :%stb.image.write)
   (export '%stb.image.write::%start-write-callbacks
-          "%STB.IMAGE.WRITE")
-  (export '%stb.image.write::write-jpg "%STB.IMAGE.WRITE")
+          :%stb.image.write)
+  (export '%stb.image.write::write-jpg :%stb.image.write)
   (export '%stb.image.write::*write-png-compression-level*
-          "%STB.IMAGE.WRITE")
-  (export '%stb.image.write::write-tga-core "%STB.IMAGE.WRITE")
+          :%stb.image.write)
+  (export '%stb.image.write::write-tga-core :%stb.image.write)
   (export '%stb.image.write::*%flip-vertically-on-write*
-          "%STB.IMAGE.WRITE")
-  (export '%stb.image.write::write-hdr-core "%STB.IMAGE.WRITE")
-  (export '%stb.image.write::write-tga-to-func "%STB.IMAGE.WRITE")
-  (export '%stb.image.write::write-jpg-core "%STB.IMAGE.WRITE")
+          :%stb.image.write)
+  (export '%stb.image.write::write-hdr-core :%stb.image.write)
+  (export '%stb.image.write::write-tga-to-func :%stb.image.write)
+  (export '%stb.image.write::write-jpg-core :%stb.image.write)
   (export '%stb.image.write::*write-force-png-filter*
-          "%STB.IMAGE.WRITE")
-  (export '%stb.image.write::write-png "%STB.IMAGE.WRITE")
-  (export '%stb.image.write::*write-tga-with-rle* "%STB.IMAGE.WRITE")
-  (export '%stb.image.write::%stdio-write "%STB.IMAGE.WRITE")
-  (export '%stb.image.write::write-jpg-to-func "%STB.IMAGE.WRITE")
-  (export '%stb.image.write::%write-context "%STB.IMAGE.WRITE")
+          :%stb.image.write)
+  (export '%stb.image.write::write-png :%stb.image.write)
+  (export '%stb.image.write::*write-tga-with-rle* :%stb.image.write)
+  (export '%stb.image.write::%stdio-write :%stb.image.write)
+  (export '%stb.image.write::write-jpg-to-func :%stb.image.write)
+  (export '%stb.image.write::%write-context :%stb.image.write)
   (export '%stb.image.write::|C:@SA@STBI--WRITE-CONTEXT|
-          "%STB.IMAGE.WRITE")
-  (export '%stb.image.write::write-tga "%STB.IMAGE.WRITE")
-  (export '%stb.image.write::write-bmp-to-func "%STB.IMAGE.WRITE")
-  (export '%stb.image.write::zlib-compress "%STB.IMAGE.WRITE")
-  (export '%stb.image.write::write-hdr "%STB.IMAGE.WRITE")
-  (export '%stb.image.write::%end-write-file "%STB.IMAGE.WRITE")
-  (export '%stb.image.write::write-hdr-to-func "%STB.IMAGE.WRITE")
+          :%stb.image.write)
+  (export '%stb.image.write::write-tga :%stb.image.write)
+  (export '%stb.image.write::write-bmp-to-func :%stb.image.write)
+  (export '%stb.image.write::zlib-compress :%stb.image.write)
+  (export '%stb.image.write::write-hdr :%stb.image.write)
+  (export '%stb.image.write::%end-write-file :%stb.image.write)
+  (export '%stb.image.write::write-hdr-to-func :%stb.image.write)
   (export '%stb.image.write::flip-vertically-on-write
-          "%STB.IMAGE.WRITE")
-  (export '%stb.image.write::%start-write-file "%STB.IMAGE.WRITE")
-  (export '%stb.image.write::write-func "%STB.IMAGE.WRITE")
-  (export '%stb.image.write::write-png-to-mem "%STB.IMAGE.WRITE"))
+          :%stb.image.write)
+  (export '%stb.image.write::%start-write-file :%stb.image.write)
+  (export '%stb.image.write::write-func :%stb.image.write)
+  (export '%stb.image.write::write-png-to-mem :%stb.image.write))
 
