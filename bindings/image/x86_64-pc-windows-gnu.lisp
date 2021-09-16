@@ -148,7 +148,7 @@
               (%stb.image::y (claw-utils:claw-pointer :int))
               (%stb.image::comp (claw-utils:claw-pointer :int)))
 
-(cffi:defcstruct (%stb.image::%io-file :size 216))
+(cffi:defcstruct (%stb.image::%io-file :size 208))
 
 (cffi:defctype %stb.image::file (:struct %stb.image::%io-file))
 
@@ -746,8 +746,6 @@
                   52)
                  (%stb.image::z-distance %stb.image::%zhuffman
                   :offset 2072))
-
-(cffi:defctype %stb.image::size-t :unsigned-long)
 
 (cffi:defctype %stb.image::%bmp-data
                (:struct %stb.image::|C:@SA@STBI--BMP-DATA|))
@@ -1680,6 +1678,8 @@
               (%stb.image::c :int)
               (%stb.image::d :int)
               (%stb.image::add :int))
+
+(cffi:defctype %stb.image::size-t :unsigned-long-long)
 
 (declaim (inline %stb.image::%malloc))
 

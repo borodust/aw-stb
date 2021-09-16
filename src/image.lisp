@@ -9,10 +9,10 @@
                           (:includes :stb-includes)
                           (:intrinsics :sse42 :avx)
                           (:targets ((:and :x86-64 :linux) "x86_64-pc-linux-gnu")
-                                    ((:and :aarch64 :android) "aarch64-linux-android"))
-                          (:persistent :aw-stb-image-bindings
-                           :asd-path "../aw-stb-image-bindings.asd"
-                           :bindings-path "../bindings/image/"
+                                    ((:and :aarch64 :android) "aarch64-linux-android")
+                                    ((:and :x86-64 :windows) "x86_64-pc-windows-gnu"))
+                          (:persistent t
+                           :bindings-path "bindings/image/"
                            :depends-on (:claw-utils))
                           (:language :c)
                           (:include-definitions "stbi_\\w*" "STBI_\\w*"))
@@ -21,7 +21,7 @@
   :recognize-bitfields t
   :recognize-strings t
   :with-adapter (:static
-                 :path "lib/image_adapter.c")
+                 :path "src/lib/image_adapter.c")
   :override-types ((:string claw-utils:claw-string)
                    (:pointer claw-utils:claw-pointer))
   :symbolicate-names (:in-pipeline

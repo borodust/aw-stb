@@ -32,8 +32,7 @@
   :mailto "dev@borodust.org"
   :license "MIT"
   :depends-on (:claw-utils :claw)
-  :pathname "src/"
   :serial t
-  :components ((:file "image")
-               (:file "image-write")
-               (:module :stb-includes :pathname "lib/stb/")))
+  :components ((:file "src/image")
+               (:file "src/image-write")
+               (:module :stb-includes :pathname "src/lib/stb/")))
