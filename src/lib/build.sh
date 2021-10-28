@@ -2,6 +2,7 @@
 
 WORK_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 LIBRARY_DIR=$WORK_DIR/stb/
+BUILD_TYPE="MinSizeRel"
 
 REST_ARGS=
 while [[ $# -gt 0 ]]
@@ -17,6 +18,10 @@ case $key in
     --ndk)
         NDK="$2"
         shift
+        shift
+        ;;
+    --debug)
+        RELEASE_MODE="Debug"
         shift
         ;;
     *)
@@ -48,20 +53,22 @@ function build_android {
     esac
 
     mkdir -p $BUILD_DIR && cd $BUILD_DIR
-    cmake -DCLAW_ANDROID_BUILD=ON \
+    cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
+          -DANDROID_PLATFORM=23 \
           -DANDROID_ABI=$ANDROID_ABI \
           -DANDROID_ARM_NEON=ON \
           -DCMAKE_TOOLCHAIN_FILE="$NDK/build/cmake/android.toolchain.cmake" \
           $WORK_DIR
-    cmake --build .
+    cmake --build . --config $BUILD_TYPE
 }
 
 function build_desktop {
     mkdir -p $BUILD_DIR && cd $BUILD_DIR
-    cmake -DCMAKE_C_COMPILER=clang \
+    cmake -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
+          -DCMAKE_C_COMPILER=clang \
           -DCMAKE_CXX_COMPILER=clang++ \
           $WORK_DIR
-    cmake --build .
+    cmake --build . --config $BUILD_TYPE
 }
 
 
